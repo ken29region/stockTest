@@ -1,0 +1,30 @@
+.container{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    border: 5px solid green;
+    horiz-align: center;
+    alignment-baseline: top;
+    position: relative;
+    top: 20px;
+}
+.forms{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.row{
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+}
+.inp{
+    height: 30px;
+    width: 70%;
+    padding: 3px;
+}
+.center{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}

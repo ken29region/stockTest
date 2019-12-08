@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+    <h1 align="center">Categories</h1>
+
+
+
+    <div id="categories_div" align="center">
+        <category-table :categories="categories"></category-table>
+    </div>
+    <div id="add_category" align="center">
+        <button @click="showModal = true">Add new category</button>
+        <modal v-if="showModal" @close="showModal = false">
+
+        </modal>
+    </div>
+
+    <form action="/products" align="center">
+        <button align="center" type="submit">Products</button>
+    </form>
+
+    <script src="/js/categories.js"></script>
+    <script src="/js/addCategory.js"></script>
+    <link rel="stylesheet" href="/css/categories.css"/>
+</body>
+</html>

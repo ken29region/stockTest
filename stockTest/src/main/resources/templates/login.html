@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Stock login</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+<div class="container" id="signIn_container">
+
+    <form class="forms" id="loginForm" method="post" action="/login">
+        <div class="row">
+            <input class="inp" id="loginInput" type="text" placeholder="login" name="login"/>
+        </div>
+        <div class="row">
+            <input class="inp" id="passwordInput" type="text" placeholder="password" name="password"/>
+        </div>
+        <div class="row" align="center">
+            <input  type="submit" id="btnSignIn" value="Log In"/>
+        </div>
+    </form>
+    <form class="forms" id="toSignUp" action="signUp" align="center">
+        <button type="submit">to Sign up</button>
+    </form>
+
+</div>
+
+</body>
+</html>

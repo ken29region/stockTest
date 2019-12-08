@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+    <link rel="stylesheet" href="/css/addProducts.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+    <h1>Add product</h1>
+    <div id="add-div">
+        <form id="add_form" class="add_form">
+            <table>
+                <tr>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Name
+                                <input id="nameIn" ref="nameIn" type="text" v-model="prodName"/>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Category
+                                <select id="category_select" @change="handleChange">
+                                    <option id="category_option"></option>
+                                </select>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Description
+                                <input id="descriptionIn" ref="descriptionIn" type="text"/>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Image
+                                <input id="imageIn" ref="imageIn" type="text"/>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Price
+                                <input id="priceIn" ref="priceIn" type="text"/>
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="add_form_section">
+                            <label class="field_label">Action
+                                <input id="btnIn" type="button" value="Add product" @click="saveBtn"/>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <form action="/products">
+        <button align="center" type="submit">Back</button>
+    </form>
+    <script src="/js/addProduct.js"></script>
+    <script src="/js/category_select.js"></script>
+</body>
+</html>

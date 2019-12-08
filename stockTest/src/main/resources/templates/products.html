@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+
+    <div>
+        <h1 align="center">Products</h1>
+    </div>
+
+    <div id="category_select" align="center">
+            <select-category></select-category>
+    </div>
+
+    <div class="productsDiv" align="center">
+        <table id="products-table">
+        </table>
+    </div>
+
+    <form action="/products/add" align="center">
+        <button align="center" type="submit">Add product</button>
+    </form>
+
+    <form action="/categories" align="center">
+        <button align="center" type="submit">Categories</button>
+    </form>
+
+
+</body>
+<script src="/js/category_select.js"></script>
+<script src="/js/products.js"></script>
+<link rel="stylesheet" href="/css/products.css"/>
+</html>
