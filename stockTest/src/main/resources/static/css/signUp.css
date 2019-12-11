@@ -1,42 +1,48 @@
 *{
     box-sizing: border-box;
 }
-
 body{
     background: #0ed145;
 }
-
 h1{
     margin: 0;
-    font-size: 50px;
+    font-size: 73px;
     color: #ffffff;
     font-family: 'Ultra', serif;
     position: center;
 }
+button:hover{
+    color: brown;
+}
+button{
+    font-family: 'Slabo 27px', serif;
+    font-size: 27px;
+    color: whitesmoke;
+    width: inherit;
+    height: inherit;
+    background-color: green;
+    border-color: chartreuse;
+    border-style: initial;
+    margin-top: 15px;
+}
 form{
-    width: 200px;
-    padding: 10px;
+    width: 250px;
+    height: max-content;
 }
 input{
     font-family: 'Slabo 27px', serif;
     font-size: 27px;
     width: inherit;
-}
-button{
-    font-family: 'Slabo 27px', serif;
-    font-size: 23px;
-    color: whitesmoke;
-    width: inherit;
-    height: max-content;
-    background-color: green;
-    border-color: chartreuse;
-    border-style: initial;
-}
-button:hover{
-    color: brown;
+    float: left;
+    margin-top: 15px;
 }
 .header_logo{
-    padding-top: 100px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+.inputs{
     display: flex;
     justify-content: center;
 }
@@ -45,18 +51,17 @@ button:hover{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px;
-    height: 50vh;
 }
-/* Forms container */
-#forms_container{
-    padding-top: 50px;
+#input_container{
+    padding-top: 20px;
     display: flex;
     justify-content: center;
 }
-/*to Sign UP button*/
-#toSignUp{
-    justify-content: right;
-    width: 200px;
-    height: 20%;
+#back{
+    width: max-content;
+}
+
+#backForm{
+    display: flex;
+    justify-content: center;
 }

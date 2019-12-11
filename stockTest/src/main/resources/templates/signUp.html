@@ -2,41 +2,38 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Stock Sign In</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/sign_in.css"/>
+    <title>Stock Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Ultra&display=swap" rel="stylesheet">
     <!-- версия для разработки, отображает полезные предупреждения в консоли -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 </head>
 <body>
-<div class="container" id="signIn_container" align="center">
+<div class="container">
 
-    <div class="form-style-2-heading">
-        Please sign up
+    <div class="header_logo">
+        <h1>Please sign up</h1>
     </div>
 
-    <form id="loginForm" action="/signUp" method="post" >
-
-        <label for="login">
-            <input id="login" type="text" placeholder="login" name="login"/>
-        </label>
-        <label for="password">
-            <input id="password" type="text" placeholder="password" name="password"/>
-        </label>
-        <label for="first-name">
-            <input id="first-name" type="text" placeholder="firstName" name="firstName"/>
-        </label>
-        <label for="last-name">
-            <input id="last-name" type="text" placeholder="lastName" name="lastName"/>
-        </label>
-        <label for="remember-me">
-            <input type="checkbox" id="remember-me"/>
-        </label>
-        <input type="submit" id="btnSignIn" value="Log In"/>
-
-    </form>
-
+    <div id="input_container" class="container">
+        <form id="loginForm" action="/signUp" method="post" >
+            <div class="inputs">
+                    <input id="login" type="text" placeholder="login" name="login"/>
+                    <input id="password" type="text" placeholder="password" name="password"/>
+                    <input id="first-name" type="text" placeholder="firstName" name="firstName"/>
+                    <input id="last-name" type="text" placeholder="lastName" name="lastName"/>
+            </div>
+            <button class="inputs" type="submit">
+                Sign Up
+            </button>
+        </form>
+    </div>
+        <form id="backForm" class="container" method="get" action="/">
+            <button id="back" class="inputs" type="submit">
+                back to main
+            </button>
+        </form>
 </div>
 
 </body>
