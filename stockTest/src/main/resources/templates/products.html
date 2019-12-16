@@ -3,38 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Ultra&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/products.css"/>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 </head>
 <body>
 
-    <div>
-        <h1 align="center">Products</h1>
+    <div class="header_logo">
+        <h1>Products</h1>
     </div>
 
-    <div id="category_select" align="center">
-            <select-category></select-category>
+    <div id="select_container" class="container">
+        <div class="select_div">
+            <h4>Category</h4>
+            <div id="category_select" ></div>
+        </div>
+        <div class="select_div">
+            <h4>Display elements</h4>
+            <div id="displayElementsDiv"></div>
+        </div>
+        <div class="select_div">
+            <h4>Sort</h4>
+            <div id="sortElementDiv"></div>
+        </div>
     </div>
 
-    <div class="productsDiv" align="center">
+    <div class="container" align="center">
         <table id="products-table">
         </table>
     </div>
 
-    <form action="/products/add" align="center">
-        <button align="center" type="submit">Add product</button>
-    </form>
+    <div class="container">
+        <button id="previousPageBtn"></button>
+        <button id="nextPageBtn"></button>
+    </div>
 
-    <form action="/categories" align="center">
-        <button align="center" type="submit">Categories</button>
-    </form>
-
+    <div class="container">
+        <form action="/products/add" align="center">
+            <button align="center" type="submit">Add product</button>
+        </form>
+        <form action="/categories" align="center">
+            <button align="center" type="submit">Categories</button>
+        </form>
+    </div>
 
 </body>
 <script src="/js/category_select.js"></script>
+<script src="/js/displayElements_select.js"></script>
+<script src="/js/sort_select.js"></script>
+<script src="/js/previousPageBtn.js"></script>
+<script src="/js/nextPageBtn.js"></script>
 <script src="/js/products.js"></script>
-<link rel="stylesheet" href="/css/products.css"/>
 </html>

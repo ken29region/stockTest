@@ -1,4 +1,3 @@
-
 var productAPI = Vue.resource('/product');
 
 Vue.component('product-row', {
@@ -40,7 +39,6 @@ var table = new Vue({
         template: '<products-list :products="products" />',
         data: {
             products: [],
-        }
+        },
     }
-
 );

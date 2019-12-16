@@ -67,6 +67,13 @@ public class FakeProduct implements ProductRepository {
         }};
     }
 
+
+    @Override
+    public List<Product> findLimitSortedBySortProductStartWith
+            (Integer startPosition, Integer limit, Integer category, String sort) {
+        return null;
+    }
+
     @Override
     public List<Product> getAll() {
         return products;

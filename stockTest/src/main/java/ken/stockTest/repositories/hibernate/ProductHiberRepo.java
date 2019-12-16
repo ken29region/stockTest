@@ -47,6 +47,59 @@ public class ProductHiberRepo implements ProductRepository {
     }
 
     @Override
+    public List<Product> findLimitSortedBySortProductStartWith
+            (Integer startPosition, Integer limit, Integer categoryId, String sort) {
+
+        List<Product> products = new LinkedList<>();
+
+        String order = "";
+
+        switch (sort){
+            case "name": {
+                order = "order by name";
+                break;
+            }
+            case "price desc": {
+                order = "order by price desc";
+                break;
+            }
+            case "price asc": {
+                order = "order by price asc";
+                break;
+            }
+            case "id": {
+                order = "order by id";
+                break;
+            }
+        }
+
+        try(Session session = sessionFactory.openSession()){
+
+            Transaction transaction = session.beginTransaction();
+
+            Query query = session
+                    .createSQLQuery("select * from product " +
+                            "where categoryid = :categoryId " +
+                            order +
+                    " offset :startPosition limit :limit ")
+                    .setParameter("categoryId", categoryId)
+                    .setParameter("startPosition", startPosition)
+                    .setParameter("limit", limit)
+                    .addEntity("product", Product.class);
+
+
+            System.out.println(query.getQueryString());
+
+            products = query.getResultList();
+
+            transaction.commit();
+
+        }
+
+        return products;
+    }
+
+    @Override
     public List<Product> findProductsByCategoryName(String categoryName) {
 
         return getAll().stream()

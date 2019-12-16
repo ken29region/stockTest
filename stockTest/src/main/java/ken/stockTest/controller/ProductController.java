@@ -8,11 +8,15 @@ import ken.stockTest.repositories.RepositoryFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("product")
 public class ProductController {
+
+    private Integer startPosition = 0;
 
     private Gson gson = new GsonBuilder().create();
 
@@ -20,22 +24,97 @@ public class ProductController {
     private RepositoryFacade globalRepo;
 
     @GetMapping("{id}")
-    public String getProduct(@RequestParam(name = "id", value = "id", required = false)Long id){
+    public String getProduct(
+            @RequestParam Map<String, String> requestParams){
+
+        String productId = requestParams.get("id");
+        Long id = Long.parseLong(productId);
+
         return gson.toJson(globalRepo.getProductById(id), Product.class);
     }
 
     @GetMapping
-    public String getAllProducts(){
-        return gson.toJson(globalRepo.getAllProducts(), List.class);
+    public String getAllProducts(@RequestParam Map<String, String> requestParam){
+
+        return gson.toJson(globalRepo
+                .getAllProducts(), List.class);
+    }
+
+    @GetMapping("nextPage")
+    public String getNextPage(@RequestParam Map<String, String> requestParam){
+
+        String limitCandidate = requestParam.get("limit");
+        Integer limit = 0;
+        if(limitCandidate != null){
+            limit = Integer.parseInt(limitCandidate);
+        }
+
+        startPosition += limit;
+        requestParam.put("startPosition", startPosition.toString());
+
+        return getProductsByPageAndSort(requestParam);
+    }
+
+    @GetMapping("previousPage")
+    public String getPreviousPage(@RequestParam Map<String, String> requestParam){
+
+        String limitCandidate = requestParam.get("limit");
+        Integer limit = 0;
+        if(limitCandidate != null){
+            limit = Integer.parseInt(limitCandidate);
+        }
+
+        startPosition = startPosition - limit;
+        requestParam.put("startPosition", startPosition.toString());
+
+        return getProductsByPageAndSort(requestParam);
+    }
+
+    @GetMapping("/page")
+    public String getProductsByPageAndSort(@RequestParam Map<String, String> requestParam){
+
+        String limitCandidate = requestParam.get("limit");
+        String catName = requestParam.get("category");
+        String sort = requestParam.get("sort");
+        String startPositionCandidate = requestParam.get("startPosition");
+
+        Integer limit = 10;
+        Integer categoryId = 1;
+
+        if(startPositionCandidate != null){
+            startPosition = Integer.parseInt(startPositionCandidate);
+            if(startPosition < 0){
+                startPosition = 0;
+            }
+        } else {
+            startPosition = 0;
+        }
+        if(limit != null){
+            limit = Integer.parseInt(limitCandidate);
+        }
+        if(catName != null) {
+            categoryId = globalRepo.findCategoryByName(catName).getId().intValue();
+        }
+        if(sort == null){
+            sort = "id";
+        }
+
+        System.out.println(requestParam);
+        System.out.println("cat id: " + categoryId + " limit: " + limit + " sort: " + sort);
+
+        return gson.toJson(globalRepo
+                .findLimitSortedBySortProductStartWith(startPosition, limit, categoryId, sort), List.class);
     }
 
     @GetMapping("/catName")
     public String getProductsByCategoryName(@RequestParam(name = "catName", value = "catName")String catName){
         if(catName.equals("all")){
-            return getAllProducts();
+            return getAllProducts(new HashMap<String, String>(){{put("displayElement", "10");}});
         }
         return gson.toJson(globalRepo.findProductsByCategoryName(catName), List.class);
     }
+
+
 
     @PostMapping
     public String addProduct(@RequestBody String json){

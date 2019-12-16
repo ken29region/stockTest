@@ -10,4 +10,7 @@ public interface ProductRepository extends Repository<Product> {
 
     List<Product> findProductsByCategoryName(String categoryName);
 
+    List<Product> findLimitSortedBySortProductStartWith
+            (Integer startPosition, Integer limit, Integer categoryId, String sort);
+
 }

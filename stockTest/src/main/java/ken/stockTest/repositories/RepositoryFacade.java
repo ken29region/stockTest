@@ -95,6 +95,11 @@ public class RepositoryFacade {
         return productRepository.findProductsByCategoryName(categoryName);
     }
 
+    public List<Product> findLimitSortedBySortProductStartWith
+            (Integer startPosition, Integer limit, Integer categoryId, String sort) {
+        return productRepository.findLimitSortedBySortProductStartWith(startPosition, limit, categoryId, sort);
+    }
+
     public Long addProduct(Product product) {
         return productRepository.add(product);
     }
