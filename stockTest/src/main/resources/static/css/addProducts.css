@@ -1,3 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: #0ed145;
+}
+h1, h2{
+    margin: 0;
+    font-size: 50px;
+    color: #ffffff;
+    font-family: 'Ultra', serif;
+    position: center;
+}
 .add_form_section{
     float: left;
     display: grid;

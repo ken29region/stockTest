@@ -44,10 +44,8 @@ public class ProductController {
     public String getNextPage(@RequestParam Map<String, String> requestParam){
 
         String limitCandidate = requestParam.get("limit");
-        Integer limit = 0;
-        if(limitCandidate != null){
-            limit = Integer.parseInt(limitCandidate);
-        }
+
+        Integer limit = checkLimitOrReturnDefaultValue(limitCandidate);
 
         startPosition += limit;
         requestParam.put("startPosition", startPosition.toString());
@@ -59,10 +57,8 @@ public class ProductController {
     public String getPreviousPage(@RequestParam Map<String, String> requestParam){
 
         String limitCandidate = requestParam.get("limit");
-        Integer limit = 0;
-        if(limitCandidate != null){
-            limit = Integer.parseInt(limitCandidate);
-        }
+
+        Integer limit = checkLimitOrReturnDefaultValue(limitCandidate);
 
         startPosition = startPosition - limit;
         requestParam.put("startPosition", startPosition.toString());
@@ -70,16 +66,27 @@ public class ProductController {
         return getProductsByPageAndSort(requestParam);
     }
 
+    private Integer checkLimitOrReturnDefaultValue(String limitCandidate){
+        Integer limit;
+        if((limitCandidate != null)){
+            limit = Integer.parseInt(limitCandidate);
+        } else {
+            limit = 10;
+        }
+        return limit;
+    }
+
     @GetMapping("/page")
     public String getProductsByPageAndSort(@RequestParam Map<String, String> requestParam){
 
         String limitCandidate = requestParam.get("limit");
         String catName = requestParam.get("category");
-        String sort = requestParam.get("sort");
+        String sortCandidate = requestParam.get("sort");
         String startPositionCandidate = requestParam.get("startPosition");
 
         Integer limit = 10;
         Integer categoryId = 1;
+        String sort = "id";
 
         if(startPositionCandidate != null){
             startPosition = Integer.parseInt(startPositionCandidate);
@@ -89,14 +96,18 @@ public class ProductController {
         } else {
             startPosition = 0;
         }
-        if(limit != null){
+        if(limitCandidate != null){
             limit = Integer.parseInt(limitCandidate);
         }
         if(catName != null) {
-            categoryId = globalRepo.findCategoryByName(catName).getId().intValue();
+            if(catName.equals("all")){
+                categoryId = 0;
+            }else {
+                categoryId = globalRepo.findCategoryByName(catName).getId().intValue();
+            }
         }
-        if(sort == null){
-            sort = "id";
+        if(sortCandidate != null){
+            sort = sortCandidate;
         }
 
         System.out.println(requestParam);

@@ -28,14 +28,21 @@ var cat_s = Vue.component('select-category', {
             if(e.target.options.selectedIndex > -1){
                 catName = e.target.options[e.target.options.selectedIndex].value
                 selectedProducts = new Array()
-                catProductsAPI.get({catName: catName}).then(result =>
-                    result.json().then(data =>
-                        data.forEach(product => selectedProducts.push(product))
+                var params = {
+                    category: catName,
+                    limit: limit,
+                    sort: sort
+                }
+                this.$http.get('/product/page', {params: params}).then(
+                    result => result.json().then(
+                        data => data.forEach(
+                            product => selectedProducts.push(product)
+                        )
                     )
-                )
+                );
+                table.products = selectedProducts
+                console.log(selectedProducts)
             }
-            table.products = selectedProducts
-            console.log(selectedProducts)
         }
     }
 });

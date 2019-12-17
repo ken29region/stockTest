@@ -26,11 +26,26 @@ Vue.component('products-list', {
             '<product-row v-for="product in products" :key="product.id" :product="product"/>' +
         '</table>',
     created: function(){
-        productAPI.get().then(result =>
+        /*productAPI.get().then(result =>
             result.json().then(data =>
                 data.forEach(product => this.products.push(product))
             )
-        )
+        )*/
+
+        catName = "all"
+        var params = {
+            category: catName,
+            limit: limit,
+            sort: sort
+        }
+        this.$http.get('/product/page', {params: params}).then(
+            result => result.json().then(
+                data => data.forEach(
+                    product => this.products.push(product)
+                )
+            )
+        );
+
     }
 });
 

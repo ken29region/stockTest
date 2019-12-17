@@ -52,7 +52,14 @@ public class ProductHiberRepo implements ProductRepository {
 
         List<Product> products = new LinkedList<>();
 
+        String categorySQL = "";
         String order = "";
+
+        if(categoryId != 0){
+            categorySQL = "where categoryid = :categoryId";
+        } else {
+            categorySQL = "where categoryid > :categoryId";
+        }
 
         switch (sort){
             case "name": {
@@ -79,9 +86,8 @@ public class ProductHiberRepo implements ProductRepository {
 
             Query query = session
                     .createSQLQuery("select * from product " +
-                            "where categoryid = :categoryId " +
-                            order +
-                    " offset :startPosition limit :limit ")
+                            categorySQL + " " + order +
+                            " offset :startPosition limit :limit ")
                     .setParameter("categoryId", categoryId)
                     .setParameter("startPosition", startPosition)
                     .setParameter("limit", limit)
