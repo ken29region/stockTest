@@ -47,6 +47,17 @@ button:hover{
     color: brown;
 }
 tr:hover {background-color: lawngreen;}
+
+.productImgTd{
+    height: 100px;
+    width: 33%;
+}
+
+.productImg{
+    height: inherit;
+    width: inherit;
+}
+
 .header_logo{
     display: flex;
     justify-content: center;

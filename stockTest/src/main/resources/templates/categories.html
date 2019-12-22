@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Categories</title>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Ultra&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 </head>
 <body>
+<div class="header_logo">
     <h1 align="center">Categories</h1>
-
-
-
-    <div id="categories_div" align="center">
+</div>
+    <div class="container" id="categories_div" align="center">
         <category-table :categories="categories"></category-table>
     </div>
-    <div id="add_category" align="center">
+    <div class="container" id="add_category" align="center">
         <button @click="showModal = true">Add new category</button>
         <modal v-if="showModal" @close="showModal = false">
 
         </modal>
     </div>
-
+<div class="container">
     <form action="/products" align="center">
         <button align="center" type="submit">Products</button>
     </form>
-
+</div>
     <script src="/js/categories.js"></script>
     <script src="/js/addCategory.js"></script>
     <link rel="stylesheet" href="/css/categories.css"/>

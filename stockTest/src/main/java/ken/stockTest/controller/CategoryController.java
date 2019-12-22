@@ -25,6 +25,7 @@ public class CategoryController {
 
     @GetMapping
     public String getAllCategories(){
+
         return gson.toJson(globalRepo.getAllCategories(), List.class);
     }
 

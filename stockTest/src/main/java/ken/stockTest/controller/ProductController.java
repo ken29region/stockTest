@@ -84,7 +84,7 @@ public class ProductController {
         String sortCandidate = requestParam.get("sort");
         String startPositionCandidate = requestParam.get("startPosition");
 
-        Integer limit = 10;
+        Integer limit = checkLimitOrReturnDefaultValue(limitCandidate);
         Integer categoryId = 1;
         String sort = "id";
 
@@ -95,9 +95,6 @@ public class ProductController {
             }
         } else {
             startPosition = 0;
-        }
-        if(limitCandidate != null){
-            limit = Integer.parseInt(limitCandidate);
         }
         if(catName != null) {
             if(catName.equals("all")){

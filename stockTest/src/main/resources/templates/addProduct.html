@@ -4,67 +4,34 @@
     <meta charset="UTF-8">
     <title>Add product</title>
     <link rel="stylesheet" href="/css/addProducts.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Ultra&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 </head>
 <body>
+<div class="header_logo">
     <h1>Add product</h1>
-    <div id="add-div">
-        <form id="add_form" class="add_form">
-            <table>
-                <tr>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Name
-                                <input id="nameIn" ref="nameIn" type="text" v-model="prodName"/>
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Category
-                                <select id="category_select" @change="handleChange">
-                                    <option id="category_option"></option>
-                                </select>
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Description
-                                <input id="descriptionIn" ref="descriptionIn" type="text"/>
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Image
-                                <input id="imageIn" ref="imageIn" type="text"/>
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Price
-                                <input id="priceIn" ref="priceIn" type="text"/>
-                            </label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="add_form_section">
-                            <label class="field_label">Action
-                                <input id="btnIn" type="button" value="Add product" @click="saveBtn"/>
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+</div>
+        <div class="container">
+            <form id="add_form" class="add_form">
+
+                    <input id="nameIn" placeholder="name" ref="nameIn" type="text" v-model="prodName"/>
+                    <select id="category_select" @change="handleChange">
+                        <option id="category_option"></option>
+                    </select>
+                    <input id="descriptionIn" placeholder="description" ref="descriptionIn" type="text"/>
+                    <input id="imageIn" placeholder="insert image path" ref="imageIn" type="text"/>
+                    <input id="priceIn" placeholder="price" ref="priceIn" type="text"/>
+                    <input id="btnIn" type="button" value="Add product" @click="saveBtn"/>
+            </form>
+        </div>
+
+    <div class="container">
+        <form action="/products">
+            <button align="center" type="submit">Back</button>
         </form>
     </div>
-    <form action="/products">
-        <button align="center" type="submit">Back</button>
-    </form>
+
     <script src="/js/addProduct.js"></script>
     <script src="/js/category_select.js"></script>
 </body>

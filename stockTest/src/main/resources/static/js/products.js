@@ -1,4 +1,4 @@
-var productAPI = Vue.resource('/product');
+var productImg;
 
 Vue.component('product-row', {
     props: ['product'],
@@ -7,10 +7,21 @@ Vue.component('product-row', {
         '<td>{{product.name}}</td>' +
         '<td>{{product.category.name}}</td>' +
         '<td>{{product.description}}</td>' +
-        '<td>{{product.imageResource}}</td>' +
+        '<td class="productImgTd"><img class="productImg" :src="getPicture()"></td>' +
         '<td>{{product.price}}</td>' +
         '<td>{{product.count}}</td>' +
-        '</tr>'
+        '</tr>',
+
+    methods:{
+        getPicture() {
+            productImg = this.product.imageSrc;
+            console.log(productImg)
+            if(productImg == 'no image')
+                return "/images/noImage.png"
+
+            return productImg
+        },
+    }
 });
 
 Vue.component('products-list', {
@@ -26,12 +37,6 @@ Vue.component('products-list', {
             '<product-row v-for="product in products" :key="product.id" :product="product"/>' +
         '</table>',
     created: function(){
-        /*productAPI.get().then(result =>
-            result.json().then(data =>
-                data.forEach(product => this.products.push(product))
-            )
-        )*/
-
         catName = "all"
         var params = {
             category: catName,
@@ -45,7 +50,6 @@ Vue.component('products-list', {
                 )
             )
         );
-
     }
 });
 

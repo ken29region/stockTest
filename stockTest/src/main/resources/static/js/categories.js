@@ -20,10 +20,10 @@ Vue.component('category-row', {
             '</transition></td>' +
             '<td>{{category.count}}</td>' +
             '<td><span>' +
-                    '<input type="button" value="Edit" @click="isShow"/>' +
-                    '<input type="button" value="Delete" @click="deleteCategory"/>' +
+                    '<input class="editBtn" type="button" value="Edit" @click="isShow"/>' +
+                    '<input class="editBtn" type="button" value="Delete" @click="deleteCategory"/>' +
                     '<transition appear-class="custom-appear-class">' +
-                        '<input type="button" value="Add" v-if="!show" @click="addCategory"/>' +
+                        '<input class="editBtn" type="button" value="Add" v-if="!show" @click="addCategory"/>' +
                     '</transition>' +
                 '</span></td>' +
         '</tr>',

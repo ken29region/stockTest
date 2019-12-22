@@ -8,8 +8,10 @@ Vue.component('modal',{
         '           <div class="modal-container">' +
                         '<input ref="input_name" type="text" placeholder="insert name" >' +
                         '<textarea ref="textarea_descr" placeholder="insert description"/>' +
-                        '<button @click="addCategory">Add</button>' +
-                        '<button class="modal-default-button" @click="$emit(\'close\')">Close</button>' +
+                        '<div class="container">' +
+                            '<button class="addEditBtn" @click="addCategory">Add</button>' +
+                            '<button class="addEditBtn" @click="$emit(\'close\')">Close</button>' +
+                        '</div>' +
                     '</div>' +
         '       </div>' +
         '</div>' +
