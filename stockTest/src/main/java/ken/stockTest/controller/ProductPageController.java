@@ -57,11 +57,11 @@ public class ProductPageController {
             }
 
             String uuidFile = UUID.randomUUID().toString();
-            String resultPathFileName =  uuidFile + "." + file.getOriginalFilename();
+            String resultPathFileName =  uuidFile + "-" + file.getOriginalFilename();
 
             System.out.println(resultPathFileName);
 
-            File newFile = new File(uploadDir + "\\" + resultPathFileName);
+            File newFile = new File(uploadDir + "/" + resultPathFileName);
 
             System.out.println(newFile.getAbsolutePath());
             file.transferTo(newFile);

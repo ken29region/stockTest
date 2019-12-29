@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/category/**").authenticated()
                 .antMatchers("/product/**").authenticated()
                 .antMatchers("/addProduct/**").authenticated()
+                .antMatchers("/img/**").authenticated()
                 .and()
         .formLogin()
                 .usernameParameter("login")

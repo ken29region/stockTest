@@ -118,7 +118,7 @@ public class ProductHiberRepo implements ProductRepository {
         Long id = product.getId();
 
         if((product.getImageSrc() == null)||(product.getImageSrc().equals("")))
-            product.setImageSrc("no image");
+            product.setImageSrc("noImage.png");
 
         try(Session session = sessionFactory.openSession()) {
 

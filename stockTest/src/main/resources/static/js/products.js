@@ -1,5 +1,4 @@
 var productImg;
-var imageDir = "/home/ubuntu/images";
 
 Vue.component('product-row', {
     props: ['product'],
@@ -21,10 +20,10 @@ Vue.component('product-row', {
     methods:{
         getPicture() {
 
-            productImg = imageDir + "\\" + this.product.imageSrc;
+            productImg = "/img/" + this.product.imageSrc;
             console.log(productImg)
-            if(productImg == 'no image')
-                return imageDir + "\\" + "noImage.png"
+            if(this.product.imageSrc == 'no image')
+                return "/img/" + "noImage.png"
 
             return productImg
         },

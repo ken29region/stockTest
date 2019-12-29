@@ -1,5 +1,6 @@
 package ken.stockTest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -24,6 +25,9 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 })
 public class StockTestApplication implements WebMvcConfigurer {
 
+	@Value("${upload.path}")
+	private String uploadPath;
+
 	@Bean
 	public PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
@@ -39,7 +43,10 @@ public class StockTestApplication implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
-		registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATION);
+		registry.addResourceHandler("/**")
+				.addResourceLocations(CLASSPATH_RESOURCE_LOCATION);
+		registry.addResourceHandler("/img/**")
+				.addResourceLocations("file:///" + uploadPath + "/");
 	}
 }
 
