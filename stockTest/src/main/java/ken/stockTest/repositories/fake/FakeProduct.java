@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class FakeProduct implements ProductRepository {
 
     private static List<Product> products;

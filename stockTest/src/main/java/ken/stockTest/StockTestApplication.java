@@ -6,10 +6,16 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @SpringBootApplication(exclude = {
 		DataSourceAutoConfiguration.class,
@@ -24,7 +30,7 @@ public class StockTestApplication implements WebMvcConfigurer {
 	}
 
 	private static final String[] CLASSPATH_RESOURCE_LOCATION = {
-			"classpath:/static/", "classpath:/resources/", "classpath:/public/", "classpath/templates/"
+			"classpath:/static/", "classpath:/resources/", "classpath:/public/", "classpath:/templates/"
 	};
 
 	public static void main(String[] args) {
@@ -35,6 +41,5 @@ public class StockTestApplication implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
 		registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATION);
 	}
-
 }
 

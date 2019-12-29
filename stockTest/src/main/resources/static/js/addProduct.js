@@ -1,7 +1,7 @@
 var productAPI = Vue.resource('/product{/id}');
 
 var addProduct = new Vue({
-    el: '#add-div',
+    el: '#add_form',
     data: {
         products: [],
     },

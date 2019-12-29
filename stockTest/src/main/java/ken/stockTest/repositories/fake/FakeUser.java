@@ -20,7 +20,7 @@ import java.util.Optional;
 @Data
 @AllArgsConstructor
 @Builder
-@Component
+//@Component
 public class FakeUser implements UserRepository {
 
     private static List<User> users;

@@ -6,6 +6,7 @@ import ken.stockTest.entity.Category;
 import ken.stockTest.entity.Product;
 import ken.stockTest.repositories.RepositoryFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,6 +23,15 @@ public class ProductController {
 
     @Autowired
     private RepositoryFacade globalRepo;
+
+    @Value("${upload.path}")
+    private String uploadPath;
+
+    @GetMapping("/imageDirectory")
+    public String getUploadPath(){
+        StringBuilder sb = new StringBuilder("{").append("imageDirectory : ").append(uploadPath).append("}");
+        return uploadPath;
+    }
 
     @GetMapping("{id}")
     public String getProduct(
@@ -126,10 +136,12 @@ public class ProductController {
 
     @PostMapping
     public String addProduct(@RequestBody String json){
+
         System.out.println(json);
         Product product = gson.fromJson(json, Product.class);
         Category category = globalRepo.findCategoryByName(product.getCategory().getName());
         product.setCategory(category);
+
         System.out.println(product.getCategory());
         globalRepo.addProduct(product);
         return json;

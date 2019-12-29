@@ -33,3 +33,7 @@ button{
     display: flex;
     justify-content: center;
 }
+#imageIn{
+    font-size: 25px;
+    font-family: 'Slabo 27px', serif;
+}

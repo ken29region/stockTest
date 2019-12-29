@@ -13,7 +13,7 @@ var cat_s = Vue.component('select-category', {
     props:
         ['categories'],
     template:
-        '<select id="category_select" ref="category_select" v-on:change="handleChange" align="center">' +
+        '<select id="category_select" name="category" ref="category_select" v-on:change="handleChange" align="center">' +
         '<option>all</option>' +
         '<option-category v-for="category in categories" :key="category.id" :category="category"/>' +
         '</select>',

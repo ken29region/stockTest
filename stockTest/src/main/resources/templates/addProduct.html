@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add product</title>
@@ -13,16 +13,17 @@
     <h1>Add product</h1>
 </div>
         <div class="container">
-            <form id="add_form" class="add_form">
-
-                    <input id="nameIn" placeholder="name" ref="nameIn" type="text" v-model="prodName"/>
+            <form id="add_form" class="add_form" enctype="multipart/form-data" action="/products/add" method="post">
+                    <input id="nameIn" name="name" placeholder="name" ref="nameIn" type="text" v-model="prodName"/>
                     <select id="category_select" @change="handleChange">
                         <option id="category_option"></option>
                     </select>
-                    <input id="descriptionIn" placeholder="description" ref="descriptionIn" type="text"/>
-                    <input id="imageIn" placeholder="insert image path" ref="imageIn" type="text"/>
-                    <input id="priceIn" placeholder="price" ref="priceIn" type="text"/>
-                    <input id="btnIn" type="button" value="Add product" @click="saveBtn"/>
+                    <input id="descriptionIn" name="description" placeholder="description" ref="descriptionIn" type="text"/>
+                    <input id="imageIn" name="file" placeholder="insert image path" ref="imageIn" type="file"/>
+                    <input id="priceIn" name="price" placeholder="price" ref="priceIn" type="text"/>
+                <div class="container">
+                    <button type="submit">Add product</button>
+                </div>
             </form>
         </div>
 

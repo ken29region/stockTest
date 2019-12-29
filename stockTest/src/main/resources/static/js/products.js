@@ -1,7 +1,13 @@
 var productImg;
+var imageDir = "/home/ubuntu/images";
 
 Vue.component('product-row', {
     props: ['product'],
+    data: function(){
+      return{
+          image: null
+    }
+    },
     template: '<tr>' +
         '<td>{{product.id}}</td>' +
         '<td>{{product.name}}</td>' +
@@ -14,14 +20,16 @@ Vue.component('product-row', {
 
     methods:{
         getPicture() {
-            productImg = this.product.imageSrc;
+
+            productImg = imageDir + "\\" + this.product.imageSrc;
             console.log(productImg)
             if(productImg == 'no image')
-                return "/images/noImage.png"
+                return imageDir + "\\" + "noImage.png"
 
             return productImg
         },
-    }
+    },
+
 });
 
 Vue.component('products-list', {
